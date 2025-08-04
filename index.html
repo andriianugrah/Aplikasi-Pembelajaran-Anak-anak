@@ -385,8 +385,7 @@
             <div class="quiz-container">
                 <h2 style="color: #4a90e2; margin-bottom: 30px; font-family: 'Poppins', sans-serif; font-weight: 700;">🎯 Quiz Hardware Komputer</h2>
                 <div class="score">
-                    <span id="score-text">Skor: <span id="score">0</span>/5</span>
-                    <span style="margin-left: 20px;">Pertanyaan: <span id="question-number">1</span>/5</span>
+                    <p>Skor: <span id="score">0</span> Pertanyaan: <span id="question-number">1</span>/<span id="total-question">15</span></p>
                 </div>
                 
                 <div id="quiz-content">
@@ -504,7 +503,107 @@
                     { image: "🖥️", text: "Monitor", name: "Monitor" }
                 ],
                 correct: 3
-            }
+            },
+            {
+                question: "Apa fungsi dari mouse pada komputer?",
+                options: [
+                    { image: "🖱️", text: "Mouse", name: "Mouse" },
+                    { image: "⌨️", text: "Keyboard", name: "Keyboard" },
+                    { image: "🖥️", text: "Monitor", name: "Monitor" },
+                    { image: "💽", text: "Hard Disk", name: "Hard Disk" }
+                ],
+                correct: 0
+            },
+            {
+                question: "Komponen apa yang memproses semua perintah?",
+                options: [
+                    { image: "🧠", text: "CPU", name: "CPU" },
+                    { image: "💾", text: "RAM", name: "RAM" },
+                    { image: "💽", text: "Hard Disk", name: "Hard Disk" },
+                    { image: "🖥️", text: "Monitor", name: "Monitor" }
+                ],
+                correct: 0
+            },
+            {
+                question: "Perangkat mana yang digunakan untuk mencetak dokumen?",
+                options: [
+                    { image: "🖨️", text: "Printer", name: "Printer" },
+                    { image: "🔊", text: "Speaker", name: "Speaker" },
+                    { image: "🖱️", text: "Mouse", name: "Mouse" },
+                    { image: "⌨️", text: "Keyboard", name: "Keyboard" }
+                ],
+                correct: 0
+            },
+            {
+                question: "Apa kegunaan speaker di komputer?",
+                options: [
+                    { image: "🖥️", text: "Monitor", name: "Monitor" },
+                    { image: "🔊", text: "Speaker", name: "Speaker" },
+                    { image: "🧠", text: "CPU", name: "CPU" },
+                    { image: "💽", text: "Hard Disk", name: "Hard Disk" }
+                ],
+                correct: 1
+            },
+            {
+                question: "Sistem operasi apa yang sering digunakan di komputer?",
+                options: [
+                    { image: "🪟", text: "Windows", name: "Windows" },
+                    { image: "🍏", text: "Apple", name: "macOS" },
+                    { image: "🐧", text: "Linux", name: "Linux" },
+                    { image: "📀", text: "CD-ROM", name: "CD-ROM" }
+                ],
+                correct: 0
+            },
+            {
+                question: "Komputer jinjing dikenal juga sebagai?",
+                options: [
+                    { image: "💻", text: "Laptop", name: "Laptop" },
+                    { image: "🖥️", text: "Monitor", name: "Monitor" },
+                    { image: "🧠", text: "CPU", name: "CPU" },
+                    { image: "📱", text: "Smartphone", name: "Smartphone" }
+                ],
+                correct: 0
+            },
+            {
+                question: "Apa fungsi dari kabel daya?",
+                options: [
+                    { image: "🔌", text: "Kabel Daya", name: "Kabel Daya" },
+                    { image: "💾", text: "RAM", name: "RAM" },
+                    { image: "🧠", text: "CPU", name: "CPU" },
+                    { image: "🖱️", text: "Mouse", name: "Mouse" }
+                ],
+                correct: 0
+            },
+            {
+                question: "Apa nama lain dari USB Flash Drive?",
+                options: [
+                    { image: "🔋", text: "Baterai", name: "Baterai" },
+                    { image: "📀", text: "CD", name: "CD" },
+                    { image: "🔑", text: "Flashdisk", name: "Flashdisk" },
+                    { image: "💽", text: "Hard Disk", name: "Hard Disk" }
+                ],
+                correct: 2
+            },
+            {
+                question: "Apa yang terjadi jika RAM penuh?",
+                options: [
+                    { image: "🐢", text: "Lambat", name: "Komputer melambat" },
+                    { image: "🚀", text: "Cepat", name: "Komputer semakin cepat" },
+                    { image: "💥", text: "Meledak", name: "Komputer meledak" },
+                    { image: "🛑", text: "Mati", name: "Komputer mati" }
+                ],
+                correct: 0
+            },
+            {
+                question: "Bagian mana yang menampilkan antarmuka pengguna?",
+                options: [
+                    { image: "🖥️", text: "Monitor", name: "Monitor" },
+                    { image: "💾", text: "RAM", name: "RAM" },
+                    { image: "⌨️", text: "Keyboard", name: "Keyboard" },
+                    { image: "🔊", text: "Speaker", name: "Speaker" }
+                ],
+                correct: 0
+            }            
         ];
 
         let currentQuestion = 0;
@@ -600,7 +699,7 @@
             }
             
             document.getElementById('final-score').innerHTML = 
-                `Skor akhir: ${score}/5<br>${message}`;
+            `Skor akhir: ${score}/${quizData.length}<br>${message}`;
         }
 
         function restartQuiz() {
