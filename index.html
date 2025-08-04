@@ -18,16 +18,19 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .container {
             max-width: 1200px;
-            margin: 0 auto;
+            width: 100%;
             padding: 20px;
+            text-align: center;
         }
 
         header {
-            text-align: center;
             background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
             padding: 30px;
@@ -51,8 +54,15 @@
             color: #4a90e2;
             font-size: 2.5em;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
             font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1::before {
+            content: "🖥️";
+            margin-right: 10px;
         }
 
         .subtitle {
@@ -67,18 +77,24 @@
             gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
+            margin-top: 20px;
         }
 
         .nav-btn {
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            background: linear-gradient(135deg, #ff9999, #ffcc99);
             color: white;
             border: none;
             padding: 12px 25px;
             border-radius: 25px;
-            cursor: pointer;
             font-size: 1.1em;
             font-weight: 600;
             font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            pointer-events: auto;
+            opacity: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
@@ -87,6 +103,14 @@
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
+
+        .nav-btn::before {
+            margin-right: 8px;
+        }
+
+        .nav-btn[data-section="learn"]::before { content: "📚"; }
+        .nav-btn[data-section="quiz"]::before { content: "🎯"; }
+        .nav-btn[data-section="facts"]::before { content: "💡"; }
 
         .section {
             background: rgba(255, 255, 255, 0.95);
@@ -120,13 +144,12 @@
             padding: 25px;
             border-radius: 15px;
             text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
+            pointer-events: none;
         }
 
         .hardware-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transform: none;
+            box-shadow: none;
         }
 
         .hardware-icon {
@@ -294,6 +317,7 @@
             margin: 20px 0;
             border-left: 5px solid #4a90e2;
             font-family: 'Poppins', sans-serif;
+            pointer-events: none;
         }
 
         .fun-fact h3 {
@@ -329,17 +353,35 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        .footer-info {
+            max-width: 960px;
+            margin: 30px auto 60px auto;
+            padding: 0 40px;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .footer-info p {
+            font-size: 16px;
+            margin: 6px 0;
+            line-height: 1.5;
+        }
+
+        .footer-info p em {
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🖥️ Belajar Hardware Komputer</h1>
+            <h1>Belajar Hardware Komputer</h1>
             <p class="subtitle">Mari belajar tentang bagian-bagian komputer dengan cara yang menyenangkan!</p>
             <div class="nav-buttons">
-                <button class="nav-btn" onclick="showSection('learn')">📚 Belajar</button>
-                <button class="nav-btn" onclick="showSection('quiz')">🎯 Quiz</button>
-                <button class="nav-btn" onclick="showSection('facts')">💡 Fakta Menarik</button>
+                <button class="nav-btn" data-section="learn" onclick="showSection('learn')">Belajar</button>
+                <button class="nav-btn" data-section="quiz" onclick="showSection('quiz')">Quiz</button>
+                <button class="nav-btn" data-section="facts" onclick="showSection('facts')">Fakta Menarik</button>
             </div>
         </header>
 
@@ -449,6 +491,11 @@
                 <p>Mouse komputer pertama dibuat dari kayu dan hanya punya satu tombol. Sekarang ada mouse dengan banyak tombol dan sensor laser!</p>
             </div>
         </div>
+    </div>
+
+    <div class="footer-info">
+        <p>Dipersembahkan dari Prodi Sistem Informasi Non Reguler (Kelas Karyawan) – Ma'soem University</p>
+        <p>KKN Kelompok 17 – Desa Narawita, Kec. Cicalengka</p>
     </div>
 
     <script>
@@ -611,16 +658,13 @@
         let answered = false;
 
         function showSection(sectionName) {
-            // Sembunyikan semua section
             const sections = document.querySelectorAll('.section');
             sections.forEach(section => {
                 section.classList.remove('active');
             });
             
-            // Tampilkan section yang dipilih
             document.getElementById(sectionName).classList.add('active');
             
-            // Reset quiz jika membuka section quiz
             if (sectionName === 'quiz') {
                 restartQuiz();
             }
@@ -632,7 +676,6 @@
             answered = true;
             const options = document.querySelectorAll('.option');
             
-            // Disable semua tombol
             options.forEach(option => {
                 option.style.pointerEvents = 'none';
             });
@@ -643,11 +686,9 @@
                 document.getElementById('score').textContent = score;
             } else {
                 button.classList.add('wrong');
-                // Highlight jawaban yang benar
                 options[quizData[currentQuestion].correct].classList.add('correct');
             }
             
-            // Tampilkan tombol next
             document.getElementById('next-btn').style.display = 'inline-block';
         }
 
@@ -690,9 +731,9 @@
             document.getElementById('congratulations').style.display = 'block';
             
             let message = '';
-            if (score === 5) {
+            if (score === quizData.length) {
                 message = 'Sempurna! Kamu sangat pintar! 🌟';
-            } else if (score >= 3) {
+            } else if (score >= Math.floor(quizData.length * 0.6)) {
                 message = 'Bagus sekali! Terus belajar! 👏';
             } else {
                 message = 'Tidak apa-apa, terus semangat belajar! 💪';
@@ -715,39 +756,9 @@
             loadQuestion();
         }
 
-        // Inisialisasi quiz saat halaman dimuat
         document.addEventListener('DOMContentLoaded', function() {
             loadQuestion();
         });
     </script>
 </body>
-<div class="footer-info">
-  <p>Dipersembahkan dari Prodi Sistem Informasi Non Reguler (Kelas Karyawan) – Ma'soem University</p>
-  <p>KKN Kelompok 17 – Desa Narawita, Kec. Cicalengka</p>
-</div>
-
-<style>
-  .footer-info {
-    max-width: 960px; /* disamakan dengan lebar konten utama (kotak putih) */
-    margin: 30px auto 60px auto; /* jarak atas-bawah lebih proporsional */
-    padding: 0 40px; /* biar gak nempel ke kiri-kanan */
-    color: #2c3e50;
-  }
-
-  .footer-info p {
-    font-size: 16px;
-    margin: 6px 0;
-    line-height: 1.5;
-  }
-
-  .footer-info p em {
-    font-style: italic;
-  }
-</style>
-
 </html>
-
-
-
-
-
