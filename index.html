@@ -131,6 +131,28 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        .hardware-definition {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 5px solid #4a90e2;
+            text-align: left;
+        }
+
+        .hardware-definition h3 {
+            color: #4a90e2;
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-size: 1.3em;
+        }
+
+        .hardware-definition p {
+            font-weight: 400;
+            line-height: 1.6;
+            font-size: 1.1em;
+        }
+
         .hardware-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -388,10 +410,12 @@
         <!-- Section Pembelajaran -->
         <div id="learn" class="section active">
             <h2 style="text-align: center; color: #4a90e2; margin-bottom: 30px; font-family: 'Poppins', sans-serif; font-weight: 700;">🔧 Komponen Hardware Komputer</h2>
-            <h2 style="text-align: center; color: #FF914D; margin-bottom: 30px; font-family: 'Poppins', sans-serif; font-weight: 700;">🖥️ Pengertian Hardware Komputer</h2>
-            <h2 style="text-align: center; color: #FF914D; margin-bottom: 30px; font-family: 'Poppins', sans-serif; font-weight: 700;">
-                Hardware komputer adalah bagian fisik dari komputer artinya semua komponen yang bisa kamu lihat dan sentuh.
-                Kalau software itu seperti otak/isi pikiran (misalnya aplikasi dan sistem operasi), maka hardware itu seperti tubuh atau alatnya.</h2>
+            
+            <div class="hardware-definition">
+                <h3>🖥️ Pengertian Hardware Komputer</h3>
+                <p>Hardware komputer adalah bagian fisik dari komputer artinya semua komponen yang bisa kamu lihat dan sentuh. Kalau software itu seperti otak/isi pikiran (misalnya aplikasi dan sistem operasi), maka hardware itu seperti tubuh atau alatnya.</p>
+            </div>
+
             <div class="hardware-grid">
                 <div class="hardware-card">
                     <span class="hardware-icon">🧠</span>
@@ -596,12 +620,12 @@
                 correct: 1
             },
             {
-                question: "Sistem operasi apa yang sering digunakan di komputer?",
+                question: "🎯 TEBAK-TEBAKAN: Aku bukan buat gambar. Aku bukan buat suara. Tapi tanpaku, kamu nggak bisa ketik atau buka program. Aku di dalam komputer. Siapakah aku?",
                 options: [
-                    { image: "🪟", text: "Windows", name: "Windows" },
-                    { image: "🍏", text: "Apple", name: "macOS" },
-                    { image: "🐧", text: "Linux", name: "Linux" },
-                    { image: "📀", text: "CD-ROM", name: "CD-ROM" }
+                    { image: "🧠", text: "CPU", name: "CPU" },
+                    { image: "🖥️", text: "Monitor", name: "Monitor" },
+                    { image: "🖱️", text: "Mouse", name: "Mouse" },
+                    { image: "🔊", text: "Speaker", name: "Speaker" }
                 ],
                 correct: 0
             },
@@ -630,7 +654,7 @@
                 options: [
                     { image: "🔋", text: "Baterai", name: "Baterai" },
                     { image: "📀", text: "CD", name: "CD" },
-                    { image: "🔑", text: "Flashdisk", name: "Flashdisk" },
+                    { image: "💿", text: "Flashdisk", name: "Flashdisk" },
                     { image: "💽", text: "Hard Disk", name: "Hard Disk" }
                 ],
                 correct: 2
@@ -646,14 +670,14 @@
                 correct: 0
             },
             {
-                question: "Bagian mana yang menampilkan antarmuka pengguna?",
+                question: "Apa yang kamu butuhkan untuk main game di komputer?",
                 options: [
-                    { image: "🖥️", text: "Monitor", name: "Monitor" },
-                    { image: "💾", text: "RAM", name: "RAM" },
                     { image: "⌨️", text: "Keyboard", name: "Keyboard" },
-                    { image: "🔊", text: "Speaker", name: "Speaker" }
+                    { image: "🖱️", text: "Mouse", name: "Mouse" },
+                    { image: "🖥️", text: "Monitor", name: "Monitor" },
+                    { image: "🎮", text: "Semuanya", name: "Semuanya benar" }
                 ],
-                correct: 0
+                correct: 3
             }            
         ];
 
@@ -766,4 +790,3 @@
     </script>
 </body>
 </html>
-
